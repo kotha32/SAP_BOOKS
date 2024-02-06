@@ -12,8 +12,8 @@
     "resources": "resources.json",
     "sourceTemplate": {
       "id": "@sap/generator-fiori:lrop",
-      "version": "1.12.2",
-      "toolsId": "86649b86-9538-46c0-a79d-8cf6508ad059"
+      "version": "1.12.0",
+      "toolsId": "b4212a87-b4a7-44c7-b1ce-076471310325"
     },
     "dataSources": {
       "mainService": {
@@ -21,6 +21,7 @@
         "type": "OData",
         "settings": {
           "annotations": [],
+          "localUri": "localService/metadata.xml",
           "odataVersion": "4.0"
         }
       }
@@ -83,7 +84,6 @@
       "css": []
     },
     "routing": {
-      "config": {},
       "routes": [
         {
           "pattern": ":?query:",
@@ -103,12 +103,33 @@
           "name": "sap.fe.templates.ListReport",
           "options": {
             "settings": {
+              "initialLoad": "Enabled",
               "contextPath": "/Student",
               "variantManagement": "Page",
               "navigation": {
                 "Student": {
                   "detail": {
                     "route": "StudentObjectPage"
+                  }
+                }
+              },
+              "controlConfiguration": {
+                "@com.sap.vocabularies.UI.v1.LineItem": {
+                  "actions": {
+                    "StudentListExt": {
+                      "press": "student.ext.studentListExt.StudentListExt.SetAlumni",
+                      "visible": true,
+                      "enabled": true,
+                      "requiresSelection": true,
+                      "text": "Set Alumni"
+                    },
+                    "StudentListExt2": {
+                      "press": "student.ext.studentListExt.StudentListExt.SetStudent",
+                      "visible": true,
+                      "enabled": true,
+                      "requiresSelection": true,
+                      "text": "Set Student"
+                    }
                   }
                 }
               }
@@ -121,6 +142,7 @@
           "name": "sap.fe.templates.ObjectPage",
           "options": {
             "settings": {
+              "createMode": "inline",
               "editableHeaderContent": false,
               "contextPath": "/Student"
             }
